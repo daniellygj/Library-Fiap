@@ -3,6 +3,8 @@ package br.com.fiap.library.controller;
 import br.com.fiap.library.dto.BookDTO;
 import br.com.fiap.library.dto.NewBookDTO;
 import br.com.fiap.library.dto.NewPriceDTO;
+import br.com.fiap.library.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -15,63 +17,41 @@ import java.util.List;
 @RequestMapping("books")
 public class LibraryController {
 
-    List<BookDTO> bookDTOList = new ArrayList<>();
+    private final BookService bookService;
 
-    public LibraryController() {
-        BookDTO bookDTO = new BookDTO();
-        bookDTO.setIsbn("1");
-        bookDTO.setTitle("Learning Spring");
-        bookDTO.setPrice(BigDecimal.valueOf(23));
-        bookDTO.setAuthor("Mary taka");
-
-        bookDTOList.add(bookDTO);
+    public LibraryController(BookService bookService) {
+        this.bookService = bookService;
     }
 
     @GetMapping
-    public List<BookDTO> listBooks() {
-        return bookDTOList;
+    public List<BookDTO> listBooks(@RequestParam String title) {
+        return bookService.listBooks(title);
     }
 
-    @GetMapping("{isbn}")
-    public BookDTO getBookById(@PathVariable(name = "isbn") String isbn) {
-        return searchBookByISBN(isbn);
+    @GetMapping("{id}")
+    public BookDTO getBookById(@PathVariable(name = "isbn") Long id) {
+        return bookService.findBookById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public BookDTO creatBook(@RequestBody BookDTO newBook) {
-        bookDTOList.add(newBook);
-        return newBook;
+    public BookDTO createBook(@RequestBody NewBookDTO newBook) {
+        return bookService.create(newBook);
     }
 
-    @PutMapping("{isbn}")
-    public BookDTO updatebook(@RequestBody NewBookDTO newBookDTO, @PathVariable String isbn) {
-        BookDTO bookFound = searchBookByISBN(isbn);
-
-        bookFound.setTitle(newBookDTO.getTitle());
-        bookFound.setAuthor(newBookDTO.getAuthor());
-        bookFound.setPrice(newBookDTO.getPrice());
-
-        return bookFound;
+    @PutMapping("{id}")
+    public BookDTO updatebook(@RequestBody NewBookDTO newBookDTO, @PathVariable Long id) {
+        return bookService.update(id, newBookDTO);
     }
 
-    @PatchMapping("{isbn}")
-    public BookDTO updateBookPrice(@RequestBody NewPriceDTO newPriceDTO, @PathVariable String isbn) {
-        BookDTO bookFound = searchBookByISBN(isbn);
-
-        bookFound.setPrice(newPriceDTO.getPrice());
-
-        return bookFound;
+    @PatchMapping("{id}")
+    public BookDTO updateBookPrice(@RequestBody NewPriceDTO newPriceDTO, @PathVariable Long id) {
+        return bookService.updatePrice(id, newPriceDTO);
     }
 
-    @DeleteMapping("{isbn}")
+    @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteBook(@PathVariable String isbn) {
-        BookDTO bookFound = searchBookByISBN(isbn);
-        bookDTOList.remove(bookFound);
-    }
-
-    private BookDTO searchBookByISBN(@PathVariable String isbn) {
-        return bookDTOList.stream().filter(dto -> dto.getIsbn().equals(isbn)).findFirst().orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public void deleteBook(@PathVariable Long id) {
+        bookService.deleteBook(id);
     }
 }
