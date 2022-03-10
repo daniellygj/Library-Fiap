@@ -4,7 +4,6 @@ import br.com.fiap.library.dto.BookDTO;
 import br.com.fiap.library.dto.NewBookDTO;
 import br.com.fiap.library.dto.NewPriceDTO;
 import br.com.fiap.library.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,12 +13,11 @@ import java.util.List;
 @RequestMapping("books")
 public class LibraryController {
 
-    @Autowired
-    private BookService bookService;
+    private final BookService bookService;
 
-//    public LibraryController(BookService bookService) {
-//        this.bookService = bookService;
-//    }
+    public LibraryController(BookService bookService) {
+        this.bookService = bookService;
+    }
 
     @GetMapping
     public List<BookDTO> listBooks(@RequestParam String title) {
