@@ -7,21 +7,19 @@ import br.com.fiap.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("books")
 public class LibraryController {
 
-    private final BookService bookService;
+    @Autowired
+    private BookService bookService;
 
-    public LibraryController(BookService bookService) {
-        this.bookService = bookService;
-    }
+//    public LibraryController(BookService bookService) {
+//        this.bookService = bookService;
+//    }
 
     @GetMapping
     public List<BookDTO> listBooks(@RequestParam String title) {
