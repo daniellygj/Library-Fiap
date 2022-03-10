@@ -1,13 +1,23 @@
 package br.com.fiap.library.dto;
 
+import br.com.fiap.library.entity.Book;
+
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 
 public class NewBookDTO {
 
     private String title;
-    private String author;
+
+    private Integer pageQty;
+
+    private String isbn;
+
     private BigDecimal price;
 
+    private ZonedDateTime releaseDate;
+
+    private String author;
     public String getTitle() {
         return title;
     }
@@ -30,5 +40,29 @@ public class NewBookDTO {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Integer getPageQty() {
+        return pageQty;
+    }
+
+    public void setPageQty(Integer pageQty) {
+        this.pageQty = pageQty;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public ZonedDateTime getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(ZonedDateTime releaseDate) {
+        this.releaseDate = releaseDate;
     }
 }
