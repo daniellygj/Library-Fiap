@@ -14,6 +14,8 @@ public class BookDTO {
         this.price = book.getPrice();
         this.releaseDate = book.getReleaseDate();
         this.author = book.getAuthor();
+        this.creationDate = book.getCreationDate();
+        this.updateDate = book.getUpdateDate();
     }
 
     public BookDTO() {
@@ -30,6 +32,10 @@ public class BookDTO {
     private ZonedDateTime releaseDate;
 
     private String author;
+
+    private ZonedDateTime creationDate;
+
+    private ZonedDateTime updateDate;
 
     public Integer getPageQty() {
         return pageQty;
@@ -77,5 +83,21 @@ public class BookDTO {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public ZonedDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(ZonedDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public ZonedDateTime getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(ZonedDateTime updateDate) {
+        this.updateDate = updateDate;
     }
 }

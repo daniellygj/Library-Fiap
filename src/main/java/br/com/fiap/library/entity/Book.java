@@ -18,6 +18,8 @@ public class Book {
         this.price = book.getPrice();
         this.releaseDate = book.getReleaseDate();
         this.author = book.getAuthor();
+        this.creationDate = book.getCreationDate();
+        this.updateDate = book.getUpdateDate();
     }
 
     public Book() {
@@ -38,6 +40,10 @@ public class Book {
     private ZonedDateTime releaseDate;
 
     private String author;
+
+    private ZonedDateTime creationDate;
+
+    private ZonedDateTime updateDate;
 
     public Long getId() {
         return id;
@@ -93,5 +99,21 @@ public class Book {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public ZonedDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(ZonedDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public ZonedDateTime getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(ZonedDateTime updateDate) {
+        this.updateDate = updateDate;
     }
 }

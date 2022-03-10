@@ -17,6 +17,10 @@ public class NewBookDTO {
 
     private ZonedDateTime releaseDate;
 
+    private ZonedDateTime creationDate;
+
+    private ZonedDateTime updateDate;
+
     private String author;
     public String getTitle() {
         return title;
@@ -64,5 +68,21 @@ public class NewBookDTO {
 
     public void setReleaseDate(ZonedDateTime releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public ZonedDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(ZonedDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public ZonedDateTime getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(ZonedDateTime updateDate) {
+        this.updateDate = updateDate;
     }
 }
