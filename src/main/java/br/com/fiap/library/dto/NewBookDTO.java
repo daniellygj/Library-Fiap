@@ -22,6 +22,7 @@ public class NewBookDTO {
     private ZonedDateTime updateDate;
 
     private String author;
+
     public String getTitle() {
         return title;
     }

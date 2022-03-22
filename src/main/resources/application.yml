@@ -2,8 +2,12 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-
   datasource:
     url: jdbc:h2:~/Documents/fiap/fiapdatabase;DB_CLOSE_ON_EXIT=FALSE
     username: fiap
     password: fiap
+  security:
+    user:
+      password: senha123
+      name: admin
+      roles: ADMIN
