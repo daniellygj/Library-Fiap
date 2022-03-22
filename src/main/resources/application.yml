@@ -4,6 +4,6 @@ spring:
       matching-strategy: ant_path_matcher
 
   datasource:
-    url: jdbc:h2:~/Documents/fiap/diapdatabase;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:~/Documents/fiap/fiapdatabase;DB_CLOSE_ON_EXIT=FALSE
     username: fiap
     password: fiap

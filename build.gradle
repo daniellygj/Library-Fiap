@@ -15,10 +15,12 @@ repositories {
 dependencies {
 //    groupId:ArtifactId:version
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'io.springfox:springfox-boot-starter:3.0.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'com.h2database:h2:2.1.210'
+    implementation 'com.h2database:h2:1.4.197'
     implementation 'org.flywaydb:flyway-maven-plugin:8.5.1'
+
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

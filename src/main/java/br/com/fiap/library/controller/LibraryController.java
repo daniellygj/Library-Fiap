@@ -20,7 +20,7 @@ public class LibraryController {
     }
 
     @GetMapping
-    public List<BookDTO> listBooks(@RequestParam String title) {
+    public List<BookDTO> listBooks(@RequestParam(required = false, value = "title") String title) {
         return bookService.listBooks(title);
     }
 
