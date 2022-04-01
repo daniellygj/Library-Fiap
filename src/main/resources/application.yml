@@ -11,3 +11,8 @@ spring:
       password: senha123
       name: admin
       roles: ADMIN
+jwt:
+  secret: f1aPs3cr37
+  expire: 5
+server:
+  port : 8081
