@@ -1,2 +1,2 @@
 # Library Fiap
-Atividade opcional do MBA em engenharia de software utilizando spring
+Atividade opcional do MBA em engenharia de software, para praticar os conceitos utilizados utilizando spring
